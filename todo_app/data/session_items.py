@@ -1,4 +1,6 @@
 from flask import session
+from todo_app.data import trello as session
+
 
 _DEFAULT_ITEMS = [
     { 'id': 1, 'status': 'Not Started', 'title': 'List saved todo items' },
@@ -13,7 +15,12 @@ def get_items():
     Returns:
         list: The list of saved items.
     """
-    return session.get('items', _DEFAULT_ITEMS)
+
+    return session.get_cards_from_list()    
+# https://api.trello.com/1/boards/602594185d55a18c4ea20b22?key=cb605ca676872005168aace21b9fbb90&token=2196313085b9d57c0cffee9e5b4e95326e4fa780b8273d8219461ac061f8a23f
+# https://api.trello.com/1/lists/602594185d55a18c4ea20b23/cards?key=cb605ca676872005168aace21b9fbb90&token=2196313085b9d57c0cffee9e5b4e95326e4fa780b8273d8219461ac061f8a23f
+# https://api.trello.com/1/lists/602594185d55a18c4ea20b23/cards?key=cb605ca676872005168aace21b9fbb90&token=2196313085b9d57c0cffee9e5b4e95326e4fa780b8273d8219461ac061f8a23f
+    # return session.get('items', _DEFAULT_ITEMS)
 
 
 def get_item(id):
